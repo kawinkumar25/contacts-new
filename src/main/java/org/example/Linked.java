@@ -95,7 +95,7 @@ public class Linked {
                 log.info("Deleted Contact Sucessfully");
                 rootnode =temp.next;
                 temp = null;
-                break;
+                
             }
             else if(deletename.equals(temp.name))
             {
@@ -103,7 +103,7 @@ public class Linked {
                 log.info("Deleted Contact Sucessfully");
                 prev.next =temp.next;
                 temp = null;
-                break;
+                
             }
             else
             {
