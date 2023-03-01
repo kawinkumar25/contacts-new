@@ -10,22 +10,26 @@ public class Linked {
     {
         rootnode = null;
     }
-    public void addContact(String name,long number,String email)
-    {
-        Node newnode = new Node(name,number,email);
-        if(rootnode==null)
-        {
-            rootnode = newnode;
-            count++;
+    public void addContact(String name,long number,String email) {
+        int flag = 0;
+        if (searchContact(name) == 1) {
+            log.info("Already this contact name is inside given see!!");
+            flag = 1;
         }
         else
         {
-            Node temp = rootnode;
-            while(temp.next != null){
-                temp = temp.next;
+            Node newnode = new Node(name, number, email);
+            if (rootnode == null) {
+                rootnode = newnode;
+                count++;
+            } else {
+                Node temp = rootnode;
+                while (temp.next != null) {
+                    temp = temp.next;
+                }
+                temp.next = newnode;
+                count++;
             }
-            temp.next = newnode;
-            count++;
         }
     }
     public void display()
@@ -48,13 +52,14 @@ public class Linked {
             }
         }
     }
-    public void searchContact(String searchname)
+    public int searchContact(String searchname)
     {
         int flag =0;
         Node temp = rootnode;
         if(temp == null)
         {
             log.info("Contacts is empty");
+            return 0;
         }
         else {
             while(temp != null)
@@ -68,7 +73,8 @@ public class Linked {
                     log.info(namecontact);
                     log.info(numberphone);
                     log.info(addressemail);
-                    break;
+                    return flag;
+
                 }
                 else
                 {
@@ -78,7 +84,9 @@ public class Linked {
             if(flag == 0)
             {
                 log.info("No contact found");
+
             }
+            return flag;
         }
     }
 
@@ -95,7 +103,7 @@ public class Linked {
                 log.info("Deleted Contact Sucessfully");
                 rootnode =temp.next;
                 temp = null;
-                
+
             }
             else if(deletename.equals(temp.name))
             {
@@ -103,7 +111,7 @@ public class Linked {
                 log.info("Deleted Contact Sucessfully");
                 prev.next =temp.next;
                 temp = null;
-                
+
             }
             else
             {
