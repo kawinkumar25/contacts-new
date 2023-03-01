@@ -10,11 +10,10 @@ public class Linked {
     {
         rootnode = null;
     }
-    public void addContact(String name,long number,String email) {
-        int flag = 0;
+    public void addContact(String name,long number,String email) 
+    {
         if (searchContact(name) == 1) {
             log.info("Already this contact name is inside given see!!");
-            flag = 1;
         }
         else
         {
